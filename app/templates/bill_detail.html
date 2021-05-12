@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="page-header">
+        Bill #{{ bill.number }} <small>/ detail</small>
+        <div class="btn-group pull-right">
+            <a href="{% url 'app:bill-edit' bill.pk %}" class="btn btn-default" role="button">Edit</a>
+            <a href="{% url 'app:bill-delete' bill.pk %}" class="btn btn-danger" role="button">Supprimer</a>
+        </div>
+    </h1>
+
+    {% include "_generics/sale_detail.html" with object=bill lines=lines payments=bill.payments.all form=form %}
+{% endblock content %}
+

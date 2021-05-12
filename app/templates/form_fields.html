@@ -1,0 +1,19 @@
+{% comment %} {% load bootstrap3 introspection_filters %} {% endcomment %}
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% if return_url %}
+<input type="hidden" name="_return_url" value="{{ return_url }}">
+{% endif %}
+
+{% comment %} {% bootstrap_form_errors form %} {% endcomment %}
+
+{% for field in form %}
+    {% comment %} {% if form|:field %} {% endcomment %}
+        <div class="form-group">
+            <label class="control-label control-label-block" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {% comment %} {% bootstrap_field field %} {% endcomment %}
+        </div>
+    {% comment %} {% else %}
+        {% bootstrap_field field %}
+    {% endif %} {% endcomment %}
+{% endfor %}

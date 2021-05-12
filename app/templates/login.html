@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+            crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+  <style>
+    :root {
+        --body_gradient_left:#7200D0;
+        --body_gradient_right: #C800C1;
+        --form_bg: #ffffff;
+        --input_bg: #E5E5E5;
+        --input_hover:#eaeaea;
+        --submit_bg: #1FCC44;
+        --submit_hover: #40e263;
+        --icon_color:#6b6b6b;
+    }
+     * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        /* make the body full height*/
+        height: 100vh;
+        /* set our custom font */
+        font-family: 'Roboto',
+        sans-serif;
+        /* create a linear gradient*/
+        background-image: linear-gradient(to right, var(--body_gradient_left), var(--body_gradient_right));
+        display:flex;
+    }
+
+    #form_wrapper {
+        width: 1000px;
+        height: 700px;
+        /* this will help us center it*/
+        margin:auto;
+        background-color: var(--form_bg);
+        border-radius: 50px;
+        /* make it a grid container*/
+        display: grid;
+        /* with two columns of same width*/
+        grid-template-columns: 1fr 1fr;
+        /* with a small gap in between them*/
+        grid-gap: 5vw;
+        /* add some padding around */
+        padding: 5vh 15px;
+    }
+    #form_left {
+        /* center the image */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #form_left img {
+        width: 350px;
+        height: 350px;
+    }
+    #form_right {
+        display: grid;
+        /* single column layout */
+        grid-template-columns: 1fr;
+        /* have some gap in between elements*/
+        grid-gap: 20px;
+        padding: 10% 5%;
+    }
+    .input_container {
+        background-color: var(--input_bg);
+        /* vertically align icon and text inside the div*/
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+    }
+
+    .input_container:hover {
+        background-color: var(--input_hover);
+    }
+
+    .input_container,
+    #input_submit {
+        height: 60px;
+        /* make the borders more round */
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    .input_field {
+        /* customize the input tag with lighter font and some padding*/
+        color: var(--icon_color);
+        background-color: inherit;
+        width: 90%;
+        border: none;
+        font-size: 1.3rem;
+        font-weight: 400;
+        padding-left: 30px;
+    }
+
+    .input_field:hover,
+    .input_field:focus {
+        /* remove the outline */
+        outline: none;
+    }
+
+    #input_submit {
+        /* submit button has a different color and different padding */
+        background-color: var(--submit_bg);
+        padding-left: 0;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    #input_submit:hover {
+        background-color: var(--submit_hover);
+        /* simple color transition on hover */
+        transition: background-color,
+            1s;
+        cursor: pointer;
+    }
+  </style>
+</head>
+{% comment %} <div class="container">
+  <div class="jumbotron">
+    <form method="post" action="{% url 'account:user_login'%}">
+      {% csrf_token %}
+      <label for='username'>Username:</label>
+      <input type="text" name="username" placeholder="Username">
+      <label for="password">Password:</label>
+      <input type="password" name="passowrd" placeholder="Passowrd">
+
+      <input type="submit" name=" " value="Login">
+    </form>
+  </div>
+</div> {% endcomment %}
+<body>
+        <div id="form_wrapper">
+            <div id="form_left">
+                <img src="icon.png" alt="computer icon">
+            </div>
+            <form method="post" action="{% url 'account:user_login'%}">
+                  {% csrf_token %}
+            <div id="form_right">
+                <h1>Member Login</h1>
+                <div class="input_container">
+                    <i class="fas fa-envelope"></i>
+                    <input placeholder="Email" type="text" name="username" id="field_email" class='input_field'>
+                </div>
+                <div class="input_container">
+                    <i class="fas fa-lock"></i>
+                    <input  placeholder="Password" type="password" name="password" id="field_password" class='input_field'>
+                </div>
+                <input type="submit" value="Login" id='input_submit' class='input_field'>
+                {% comment %} <span>Forgot <a href="#"> Username / Password ?</a></span> {% endcomment %}
+                <span id='create_account'>
+                    <a href="{% url 'account:register'%}">Create your account ➡ </a>
+                </span>
+            </div>
+            </form>
+        </div>
+    </body>
+</html>

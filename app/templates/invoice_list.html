@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <h1 class="page-header">Invoices <small>which belong to you</small></h1>
+
+    {% include "_generics/sale_list.html" with sales=invoices detailed=True %}
+
+    <a href="{% url 'app:invoice-create' %}" class="btn btn-primary btn-lg" role="button">
+        Add an invoice
+    </a>
+{% endblock content %}

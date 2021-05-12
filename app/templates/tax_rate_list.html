@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="page-header">Tax Rates <small>which belong to you</small></h1>
+
+    {% include "_partials/tax_rate_list.html" with tax_rates=tax_rates %}
+
+    <a href="{% url 'app:tax_rate-create' %}" class="btn btn-primary btn-lg" role="button">
+        Add a Tax rate
+    </a>
+{% endblock content %}
+
